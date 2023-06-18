@@ -2,9 +2,9 @@ drop table selectors if exists;
 drop table users if exists;
 create table selectors(id serial,parent_id integer,name varchar(255));
 create table users(id serial,name varchar(255),selectors integer array,att boolean);
-INSERT INTO selectors (id, parent_id, name) VALUES (1, null, 'Manufacturing');
+INSERT INTO selectors (id, parent_id, name) VALUES (1, 0, 'Manufacturing');
 
-INSERT INTO selectors (id, parent_id, name) VALUES (19, 1, 'Manufacturing');
+INSERT INTO selectors (id, parent_id, name) VALUES (19, 1, 'Construction materials');
 INSERT INTO selectors (id, parent_id, name) VALUES (18, 1, 'Electronics and Optics');
 INSERT INTO selectors (id, parent_id, name) VALUES (6, 1, 'Food and Beverage');
 
@@ -84,13 +84,13 @@ INSERT INTO selectors (id, parent_id, name) VALUES (337, 8, 'Other (Wood)');
 INSERT INTO selectors (id, parent_id, name) VALUES (51, 8, 'Wooden building materials');
 INSERT INTO selectors (id, parent_id, name) VALUES (47, 8, 'Wooden houses');
 
-INSERT INTO selectors (id, parent_id, name) VALUES (3, null, 'Other');
+INSERT INTO selectors (id, parent_id, name) VALUES (3, 0, 'Other');
 
 INSERT INTO selectors (id, parent_id, name) VALUES (37, 3, 'Creative industries');
 INSERT INTO selectors (id, parent_id, name) VALUES (29, 3, 'Energy technology');
 INSERT INTO selectors (id, parent_id, name) VALUES (33, 3, 'Environment');
 
-INSERT INTO selectors (id, parent_id, name) VALUES (2, null, 'Service');
+INSERT INTO selectors (id, parent_id, name) VALUES (2, 0, 'Service');
 
 INSERT INTO selectors (id, parent_id, name) VALUES (25, 2, 'Business services');
 INSERT INTO selectors (id, parent_id, name) VALUES (35, 2, 'Engineering');
