@@ -5,8 +5,8 @@ import { NestedTreeControl } from "@angular/cdk/tree";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 
 interface selectorDto {
-  id?: number;
   name: string;
+  id?: number;
   parentId?: number;
   children?: selectorDto[];
   selected?: boolean;
