@@ -1,6 +1,7 @@
 package com.example.Selector.app.controller;
 
 import com.example.Selector.app.Dto.SelectorDto;
+import com.example.Selector.app.Dto.SelectorListDto;
 import com.example.Selector.app.entity.Selector;
 import com.example.Selector.app.entity.User;
 import com.example.Selector.app.helpers.SelectorControllerHelper;
@@ -25,8 +26,9 @@ public class SelectorController {
     @Autowired
     private SelectorControllerHelper helper;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/selectors")
-    public ResponseEntity<List<SelectorDto>> getAllSelectors(){
+    public ResponseEntity<SelectorListDto> getAllSelectors(){
         List<Selector> data = selectorService.getAllSelectors();
         List<Selector> rootSelectors = data.stream().filter(c -> c.getParentId() == 0).toList();
         List<SelectorDto> newData = new ArrayList<>();
@@ -41,10 +43,13 @@ public class SelectorController {
             }
             newData.add(dto);
         }
-        return ResponseEntity.ok().body(newData);
+        SelectorListDto result = new SelectorListDto();
+        result.setResults(newData);
+        return ResponseEntity.ok().body(result);
     }
 
-    @PostMapping("/users")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("selectors/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
         if (SelectorControllerHelper.isValidUser(user)){
             return ResponseEntity.ok().body(this.userService.createUser(user));
@@ -52,7 +57,8 @@ public class SelectorController {
         return ResponseEntity.badRequest().body(user);
     }
 
-    @PutMapping("/users/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("selectors/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user){
         user.setId(id);
         if (SelectorControllerHelper.isValidUser(user) && id != 0){

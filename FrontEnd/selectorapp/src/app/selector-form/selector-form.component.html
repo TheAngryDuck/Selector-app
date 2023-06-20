@@ -1,0 +1,47 @@
+<div class="container">
+
+    <h1>User Registration</h1>
+
+    <form #userDto = "ngForm" (ngSubmit)="submit(userDto)">
+
+        <div class="form-group">
+
+            <label for="name">Name</label><br>
+
+            <input required minlength="2" type="text" name="name" class = "form-control" [(ngModel)]="model.name" #name="ngModel" ngModel>
+
+            <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+
+                <p *ngIf="name.errors?.['required']">Name Required!</p>
+
+                <p *ngIf="name.errors?.['minlength']">Sorry! Name is too short</p>
+
+            </div>
+        </div>
+
+        <pre></pre>
+
+        <app-selector-dropdown></app-selector-dropdown>
+
+        <pre></pre>
+
+        <div class="form-group">
+
+            <label for="agreeTermsConditions">Agree to terms</label><br>
+
+            <input required type="checkbox" name="agreeTermsConditions" class = "form-control" [(ngModel)]="model.agreeTermsConditions" #check="ngModel" ngModel>
+
+            <div *ngIf="check.touched && check.invalid" class="alert alert-danger">
+
+                <p *ngIf="check.errors?.['required']">agreement is Required!</p>
+
+            </div>
+        </div>
+
+        <pre></pre>
+
+        <button class="btn btn-primary" type="submit">Save</button>
+
+    </form>
+
+</div>
