@@ -1,13 +1,4 @@
-
-interface selectorDto {
-     id?: number;
-     name: string;
-     parentId?: number;
-     children?: selectorDto[];
-     selected?: boolean;
-     indeterminate?: boolean;
-     parent?: selectorDto | null;
-   }
+import { selectorDto } from "./selectorDto";
 
 export interface selectorListDto{
 

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { userDto } from '../userDto';
 import { selectorDto } from '../selectorDto';
+import { selectorListDto } from '../selectorListDto';
+
+const reqHeaders = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json')
 
 @Injectable()
 export class ConfigService {
@@ -15,10 +15,15 @@ export class ConfigService {
   getSelectors() {
     return this.http.get<selectorListDto>(this.configUrl);
   }
+
+  addUser(dto: userDto){
+    
+    return this.http.post<userDto>(this.configUrl+"/users", dto,{headers: reqHeaders});
+  }
+
+  updateUser(dto: userDto){
+    return this.http.put<userDto>(this.configUrl+"/users/"+dto.id, dto,{headers: reqHeaders});
+  }
 }
 
-interface selectorListDto{
 
-  results: selectorDto[]
- 
-}

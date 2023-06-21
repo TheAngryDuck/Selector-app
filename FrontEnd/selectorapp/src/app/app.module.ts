@@ -47,15 +47,13 @@ import {MatTreeModule} from '@angular/material/tree';
 
 import { AppComponent } from './app.component';
 import { SelectorFormComponent } from './selector-form/selector-form.component';
-import { SelectorDropdownComponent } from './selector-dropdown/selector-dropdown.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SelectorFormComponent,
-    SelectorDropdownComponent
+    SelectorFormComponent
   ],
   imports: [
     BrowserModule,

@@ -32,10 +32,14 @@ public class SelectorControllerHelper {
     }
 
     public static boolean isValidUser(User user){
-        if (isNullOrWhitespace(user.getName()) &&
-                user.getAgreeTermsConditions() &&
-                user.getSelectors() != null &&
-                user.getSelectors().length != 0){
+        if (isNullOrWhitespace(user.getName())){
+            if (user.getAgreeTermsConditions()){
+                if (user.getSelectors() != null){
+                    if (user.getSelectors().length != 0){
+
+                    }
+                }
+            }
             return true;
         }
         return false;
@@ -47,13 +51,8 @@ public class SelectorControllerHelper {
     }
 
     private static boolean isWhitespace(String s) {
-        int length = s.length();
+        int length = s.trim().length();
         if (length > 0) {
-            for (int i = 0; i < length; i++) {
-                if (!Character.isWhitespace(s.charAt(i))) {
-                    return false;
-                }
-            }
             return true;
         }
         return false;

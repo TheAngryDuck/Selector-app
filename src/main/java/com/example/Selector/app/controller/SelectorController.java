@@ -49,7 +49,7 @@ public class SelectorController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("selectors/users")
+    @PostMapping("/selectors/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
         if (SelectorControllerHelper.isValidUser(user)){
             return ResponseEntity.ok().body(this.userService.createUser(user));
@@ -58,7 +58,7 @@ public class SelectorController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PutMapping("selectors/users/{id}")
+    @PutMapping("/selectors/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user){
         user.setId(id);
         if (SelectorControllerHelper.isValidUser(user) && id != 0){
