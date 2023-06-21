@@ -61,12 +61,14 @@ export class SelectorFormComponent {
                   .subscribe((data: userDto) => {
                     this.userId = data.id! ;
                   });
-            this.saveButtonText = "Save Changes";    
+            this.saveButtonText = "Save Changes";   
+            alert("Added user: "+dto.name+"!");
           }else{
             dto.id = this.userId;
             this.configService.updateUser(dto)
             .subscribe((data: userDto) => {
             });
+            alert("Updated user: "+dto.name+"!");
           }
     }  
   }
